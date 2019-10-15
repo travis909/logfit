@@ -3,6 +3,7 @@ git_source(:github) { |repo| "https://github.com/#{repo}.git" }
 
 ruby '2.5.5'
 
+gem 'bcrypt', '~> 3.1', '>= 3.1.13'
 gem 'bootsnap', '>= 1.4.2', require: false
 gem 'hirb', '~> 0.7.3'
 gem 'jbuilder', '~> 2.7'
