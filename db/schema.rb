@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2019_10_15_203732) do
+ActiveRecord::Schema.define(version: 2019_10_17_225430) do
 
   create_table "exercises", force: :cascade do |t|
     t.string "name", null: false
@@ -32,6 +32,8 @@ ActiveRecord::Schema.define(version: 2019_10_15_203732) do
     t.string "password_digest"
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
+    t.integer "workout_id"
+    t.index ["workout_id"], name: "index_users_on_workout_id"
   end
 
   create_table "workouts", force: :cascade do |t|
@@ -39,8 +41,11 @@ ActiveRecord::Schema.define(version: 2019_10_15_203732) do
     t.integer "exercise_id"
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
+    t.integer "user_id"
     t.index ["exercise_id"], name: "index_workouts_on_exercise_id"
+    t.index ["user_id"], name: "index_workouts_on_user_id"
   end
 
+  add_foreign_key "users", "workouts"
   add_foreign_key "workouts", "exercises"
 end

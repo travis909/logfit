@@ -15,7 +15,7 @@ RSpec.describe Workout, type: :model do
   end
 
   context 'validation tests' do
-    describe name do
+    describe 'date' do
       it 'should ensure that a date is present' do
         expect(workout).to be_valid
         workout.date = nil
