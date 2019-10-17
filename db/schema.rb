@@ -36,7 +36,7 @@ ActiveRecord::Schema.define(version: 2019_10_15_203732) do
 
   create_table "workouts", force: :cascade do |t|
     t.datetime "date", null: false
-    t.integer "exercise_id", null: false
+    t.integer "exercise_id"
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
     t.index ["exercise_id"], name: "index_workouts_on_exercise_id"

@@ -6,8 +6,11 @@ RSpec.describe Workout, type: :model do
     it 'should have a date' do
       expect(workout.date).to eq('2019-10-13 21:32:21')
     end
-    it 'should have a exercises' do
-
+    it 'can have multiple exercises' do
+      workout = create(:workout)
+      create(:exercise, workout_id: 1)
+      create(:exercise, name: 'jumping jacks', workout_id: 1)
+      expect(workout.exercises.count).to eq(2)
     end
   end
 
