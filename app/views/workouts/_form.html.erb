@@ -1,21 +1,52 @@
-<% if @errors.present? %>
-  <div class="errors">
-    <ul>
-      <% @errors.each do |error| %>
-        <li><%= error %></li>
-      <% end %>
-    </ul>
-  </div>
-<% end %>
+<div class="container-fluid">
+  <%= form_with(model: @workout, local: true) do |form| %>
+    <% if @workout.errors.any? %>
+      <div id="error_explanation">
+        <h2><%= pluralize(workout.errors.count, "error") %> prohibited this workout from being saved:</h2>
 
-<div class='row'>
-  <div class="col-md-6">
-    <%= form_for @workout do |f| %>
-      <div class="form-group">
-        <%= f.label :date %>
-        <%= f.date_field :date %>
+        <ul>
+          <% @workout.errors.full_messages.each do |message| %>
+            <li><%= message %></li>
+          <% end %>
+        </ul>
       </div>
-      <%= f.submit %>
     <% end %>
-  </div>
+
+    <div class="container-fluid">
+      <form>
+        <div class="container-fluid">
+          <%= form_for @workout do |f| %>
+            <div class="form-group">
+              <%= f.label :date %>
+              <%= f.date_field :date %>
+            </div>
+          <% end %>
+        </div>
+
+        <div class="container-fluid">
+          <div data-controller="nested-form">
+            <h6>Exercises</h6>
+            <template data-target="nested-form.template">
+              <%= form.fields_for :exercises, Exercise.new, child_index: 'TEMPLATE_RECORD' do |exercise| %>
+                <%= render 'exercise_fields', form: exercise %>
+              <% end %>
+            </template>
+
+            <%= form.fields_for :exercises do |exercise| %>
+              <%= render 'exercise_fields', form: exercise %>
+            <% end %>
+
+            <div data-target="nested-form.add_exercise">
+              <a role="button" class="btn btn-outline-primary"
+              <%= link_to "Add Exercise", "#", data: { action: "nested-form#add_association" } %>
+            </div>
+          </div>
+        </div>
+
+        <div class="actions" >
+          <%= form.submit %>
+        </div>
+      </form>
+    </div>
+  <% end %>
 </div>
