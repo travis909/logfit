@@ -1,0 +1,14 @@
+<h1><%= @workout.date %></h1>
+
+<h2>Exercises:</h2>
+<p><%= @workout.exercises %></p>
+
+<div>
+  <ul>
+    <li><%= link_to "Back", workouts_path %></li>
+    <li><%= link_to "Edit", edit_workout_url(@workout) %></li>
+    <li><%= link_to "Delete", workout_path(@workout), data: {
+        confirm: "Are you sure you want to delete the workout on: #{@workout.date}?",
+    }, method: :delete %></li>
+  </ul>
+</div>

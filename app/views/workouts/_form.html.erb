@@ -1,0 +1,21 @@
+<% if @errors.present? %>
+  <div class="errors">
+    <ul>
+      <% @errors.each do |error| %>
+        <li><%= error %></li>
+      <% end %>
+    </ul>
+  </div>
+<% end %>
+
+<div class='row'>
+  <div class="col-md-6">
+    <%= form_for @workout do |f| %>
+      <div class="form-group">
+        <%= f.label :date %>
+        <%= f.date_field :date %>
+      </div>
+      <%= f.submit %>
+    <% end %>
+  </div>
+</div>

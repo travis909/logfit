@@ -34,6 +34,14 @@ RSpec.describe Exercise, type: :model do
         expect(exercise).to_not be_valid
       end
     end
+    describe 'workout' do
+      it 'should have an associated workout' do
+        exercise = create(:exercise)
+        expect(exercise).to be_valid
+        exercise.workout_id = nil
+        expect(exercise).to_not be_valid
+      end
+    end
   end
 
   context 'scope tests' do
