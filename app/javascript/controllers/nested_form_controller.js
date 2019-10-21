@@ -9,9 +9,9 @@ export default class extends Controller {
         this.add_exerciseTarget.insertAdjacentHTML('beforebegin', content)
     }
     remove_association(event){
-        event.preventDefault()
+        event.preventDefault() //not clickable
         let item = event.target.closest(".nested-fields")
-        item.querySelector("input[name+='_destroy']").value = 1
+        item.value = 1
         item.style.display = 'none'
     }
 }

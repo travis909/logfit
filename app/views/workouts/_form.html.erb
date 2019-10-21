@@ -2,7 +2,7 @@
   <%= form_with(model: @workout, local: true) do |form| %>
     <% if @workout.errors.any? %>
       <div id="error_explanation">
-        <h2><%= pluralize(workout.errors.count, "error") %> prohibited this workout from being saved:</h2>
+        <h2><%= pluralize(@workout.errors.count, "error") %> prohibited this workout from being saved:</h2>
 
         <ul>
           <% @workout.errors.full_messages.each do |message| %>
@@ -12,7 +12,7 @@
       </div>
     <% end %>
 
-    <div class="container-fluid">
+    <div class="container-fluid align-items-center">
       <form>
         <div class="container-fluid">
           <%= form_for @workout do |f| %>

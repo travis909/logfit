@@ -9,6 +9,8 @@ class WorkoutsController < ApplicationController
 
   def show
     @workout = current_user.workouts.find(params[:id])
+    @formatted_workout_date =
+      "#{current_user.workouts.find(params[:id]).date.strftime('%B')}, #{current_user.workouts.find(params[:id]).date.day}, #{current_user.workouts.find(params[:id]).date.year}"
   end
 
   def new

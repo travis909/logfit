@@ -10,10 +10,10 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2019_10_17_225430) do
+ActiveRecord::Schema.define(version: 2019_10_21_232512) do
 
   create_table "exercises", force: :cascade do |t|
-    t.string "name", null: false
+    t.string "name"
     t.integer "reps"
     t.decimal "weight"
     t.string "weight_unit"
