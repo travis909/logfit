@@ -5,6 +5,8 @@ class WorkoutsController < ApplicationController
 
   def index
     @workouts = current_user.workouts.order(:date)
+    @workouts_by_date = @workouts.group_by(&:date)
+    @date = params[:date] ? Date.parse(params[:date]) : Date.today
   end
 
   def show
