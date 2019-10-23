@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html>
   <head>
-    <title>Logfit</title>
+    <title>Log_Fit</title>
     <%= csrf_meta_tags %>
     <%= csp_meta_tag %>
 
@@ -13,8 +13,34 @@
   </head>
 
   <body>
-    <div class="container">
-      <%= yield %>
+    <div class="bg">
+      <nav class="navbar navbar-expand-lg navbar-light">
+        <a class="navbar-brand" href="/workouts"><img src="/assets/favicon.png" style="height: 20px" alt="Log_Fit"></a>
+        <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarText" aria-controls="navbarText" aria-expanded="false" aria-label="Toggle navigation">
+          <span class="navbar-toggler-icon na"></span>
+        </button>
+        <div class="collapse navbar-collapse" id="navbarText">
+          <ul class="navbar-nav mr-auto">
+            <li class="nav-item active">
+              <div class="nav-link"><%= link_to 'Workout Log', workouts_path %></div>
+            </li>
+            <li class="nav-item">
+              <div class="nav-link"><%= link_to 'New Workout', new_workout_path %></div>
+            </li>
+            <li class="nav-item">
+              <div class="nav-link"><%= link_to 'Log Out', log_out_path %></div>
+            </li>
+          </ul>
+          <span class="navbar-text">
+
+            <!-- Fix line Below With: User.find_by(id: session[:user_id]).name-->
+            <h6 class="user-text"><%= "User: #{}" %></h6>
+          </span>
+        </div>
+      </nav>
+      <div class="container">
+        <%= yield %>
+      </div>
     </div>
   </body>
 </html>

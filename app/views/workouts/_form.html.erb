@@ -17,15 +17,16 @@
         <div class="container-fluid">
           <%= form_for @workout do |f| %>
             <div class="form-group">
-              <%= f.label :date %>
-              <%= f.date_field :date %>
+              <h2><%= f.label :date %></h2>
+              <div style="font-size: 18pt"><%= f.date_field :date %></div>
             </div>
           <% end %>
         </div>
 
         <div class="container-fluid">
           <div data-controller="nested-form">
-            <h6>Exercises</h6>
+            <br><br>
+            <h2>Exercises</h2>
             <template data-target="nested-form.template">
               <%= form.fields_for :exercises, Exercise.new, child_index: 'TEMPLATE_RECORD' do |exercise| %>
                 <%= render 'exercise_fields', form: exercise %>
@@ -37,11 +38,14 @@
             <% end %>
 
             <div data-target="nested-form.add_exercise">
-              <a role="button" class="btn btn-outline-primary"
+              <br>
+              <a role="button" class="btn btn-outline-secondary btn-lg"
               <%= link_to "Add Exercise", "#", data: { action: "nested-form#add_association" } %>
             </div>
           </div>
         </div>
+
+        <br><br>
 
         <div class="actions" >
           <%= form.submit %>

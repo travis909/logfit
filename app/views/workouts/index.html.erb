@@ -1,25 +1,19 @@
-<h1>Workouts</h1>
-
-<div>
-  <%= link_to "New Workout", new_workout_path %>
-</div>
+<h1 class="workout_title">Workouts</h1>
 
 <div id="workouts">
-  <h2 id="month">
+  <h1 id="month">
     <%= link_to "<", date: @date.prev_month %>
     <%= @date.strftime("%B %Y") %>
     <%= link_to ">", date: @date.next_month %>
-  </h2>
+  </h1>
   <%= calendar @date do |date| %>
     <%= date.day %>
     <% if @workouts_by_date[date] %>
       <ul>
         <% @workouts_by_date[date].each do |workout| %>
-          <li><%= link_to workout.date, workout %></li>
+          <li><%= link_to workout.date.strftime("%m/%d/%Y"), workout %></li>
         <% end %>
       </ul>
     <% end %>
   <% end %>
 </div>
-
-<%= link_to "Log Out", "/log_out" %>
