@@ -16,19 +16,18 @@ class WorkoutsController < ApplicationController
   end
 
   def new
-    @workout = current_user.workouts.build
+    @workout = current_user.workouts.new
   end
 
   def create
-    @workout = current_user.workouts.build(workout_params)
-
+    @workout = current_user.workouts.new(workout_params)
     if @workout.save
-      redirect_to workout_path(@workout), notice: 'Workout Created'
+      redirect_to @workout, notice: 'Workout was successfully created.'
     else
       @errors = @workout.errors.full_messages
-      render :new
+      redirect_to new_workout_path, notice: @errors
     end
-  end
+end
 
   def edit
     @workout = current_user.workouts.find(params[:id])
