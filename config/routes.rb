@@ -6,5 +6,6 @@ Rails.application.routes.draw do
   resources :exercises
   resources :sessions, only: [:create]
 
+  get 'create_workout' => 'workout#create'
   get 'log_out' => 'sessions#destroy'
 end
