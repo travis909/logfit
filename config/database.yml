@@ -26,5 +26,5 @@ test:
 production:
   <<: *default
   database: logfit_production
-  username: logfit
+  username: travis909
   password: <%= ENV['LOGFIT_DATABASE_PASSWORD'] %>
