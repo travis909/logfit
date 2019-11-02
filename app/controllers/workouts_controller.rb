@@ -35,12 +35,12 @@ class WorkoutsController < ApplicationController
 
   def update
     @workout = current_user.workouts.find(params[:id])
-
-    if @workout.update_attributes(workout_params)
+    @updated_workout = @workout.update_attributes(workout_params)
+    if @updated_workout.save
       redirect_to workout_path(@workout), notice: 'Workout Updated'
     else
       @errors = @workout.errors.full_messages
-      render :edit
+      redirect_to edit_workout_path
     end
   end
 
