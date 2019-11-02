@@ -16,14 +16,13 @@ class WorkoutsController < ApplicationController
   end
 
   def new
-    #@workout = current_user.workouts.build(user_id: current_user.id)
     @workout = current_user.workouts.build(date: Date.today)
   end
 
   def create
-    @workout = current_user.workouts.update(workout_params)
+    @workout = current_user.workouts.build(workout_params)
     if @workout.save
-      redirect_to @workout, notice: 'Workout was successfully created.'
+      redirect_to workouts_path, notice: 'Workout was successfully created.'
     else
       @errors = @workout.errors.full_messages
       redirect_to new_workout_path, notice: @errors
@@ -54,6 +53,6 @@ class WorkoutsController < ApplicationController
   private
 
   def workout_params
-    params.require(:workout).permit(:date, exercises_attributes: %i[_destroy id name reps weight weight_unit hours minutes seconds])
+    params.fetch(:workout, {}).permit(:date, exercises_attributes: %i[_destroy id name reps weight weight_unit hours minutes seconds])
   end
 end

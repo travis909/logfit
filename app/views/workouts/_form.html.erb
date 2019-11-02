@@ -1,6 +1,5 @@
-<div class="container-fluid">
-  <%= form_with(model: @workout, local: true, authenticity_token: true) do |form| %>
-    <%= hidden_field_tag :authenticity_token, form_authenticity_token -%>
+<div class="container-fluid form">
+  <%= form_with(model: @workout) do |form| %>
     <% if @workout.errors.any? %>
       <div id="error_explanation">
         <h2><%= pluralize(@workout.errors.count, "error") %> prohibited this workout from being saved:</h2>
@@ -14,44 +13,39 @@
     <% end %>
 
     <div class="container-fluid align-items-center">
-      <form>
-        <div class="container-fluid">
-          <%= form_for @workout do |f| %>
-            <div class="form-group">
-              <h2><%= f.label :date %></h2>
-              <div style="font-size: 18pt"><%= f.date_field :date %></div>
-            </div>
-          <% end %>
+      <%= form_for @workout do |f| %>
+        <div class="form-group">
+          <h2><%= f.label :date %></h2>
+          <div class="workout_form_date"><%= f.date_field :date %></div>
         </div>
+      <% end %>
 
-        <div class="container-fluid">
-          <div data-controller="nested-form">
-            <br><br>
-            <h2>Exercises</h2>
-            <template data-target="nested-form.template">
-              <%= form.fields_for :exercises, Exercise.new, child_index: 'TEMPLATE_RECORD' do |exercise| %>
-                <%= render 'exercise_fields', form: exercise %>
-              <% end %>
-            </template>
-
-            <%= form.fields_for :exercises do |exercise| %>
+      <div class="container-fluid">
+        <div data-controller="nested-form">
+          <br><br>
+          <h2>Exercises</h2>
+          <template data-target="nested-form.template">
+            <%= form.fields_for :exercises, Exercise.new, child_index: 'TEMPLATE_RECORD' do |exercise| %>
               <%= render 'exercise_fields', form: exercise %>
             <% end %>
+          </template>
 
-            <div data-target="nested-form.add_exercise">
-              <br>
-              <%= link_to "Add Exercise", "#", data: { action: "nested-form#add_association" } %>
-            </div>
+          <%= form.fields_for :exercises do |exercise| %>
+            <%= render 'exercise_fields', form: exercise %>
+          <% end %>
+
+          <div data-target="nested-form.add_exercise">
+            <br>
+            <%= link_to "Add Exercise", "#", data: { action: "nested-form#add_association" } %>
           </div>
         </div>
+      </div>
 
-        <br><br>
+      <br><br>
 
-        <div class="actions" >
-          <%= link_to "Create Workout", workouts_path, :method => :post %>
-          <%= form.submit %>
-        </div>
-      </form>
+      <div class="actions" >
+        <%= form.submit %>
+      </div>
     </div>
   <% end %>
 </div>

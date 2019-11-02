@@ -25,5 +25,13 @@
       <jdbc-driver>org.postgresql.Driver</jdbc-driver>
       <jdbc-url>jdbc:postgresql://127.0.0.1:5432/logfit_development</jdbc-url>
     </data-source>
+    <data-source source="LOCAL" name="Rails logfit: production" uuid="04ac95ce-0383-4402-aa7d-29f45631bea3">
+      <driver-ref>postgresql</driver-ref>
+      <synchronize>true</synchronize>
+      <imported>true</imported>
+      <remarks>$PROJECT_DIR$/config/database.yml</remarks>
+      <jdbc-driver>org.postgresql.Driver</jdbc-driver>
+      <jdbc-url>jdbc:postgresql://127.0.0.1:5432/logfit_production</jdbc-url>
+    </data-source>
   </component>
 </project>

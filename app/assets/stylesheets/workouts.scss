@@ -8,28 +8,28 @@
 
   td, th {
     font-family: "Lucida Grande", arial, helvetica, sans-serif;
-    font-size: 10px;
+    font-size: 18px;
     padding: 6px;
-    border: 1px solid #999;
+    border: 1px solid #454D55;
   }
 
   th {
-    background: #DDD;
-    color: #666;
+    background: #343A40;
+    color: whitesmoke;
     text-align: center;
     width: 10%;
   }
 
   td {
-    background: #FFF;
-    color: #777;
+    background: #3E444A;
+    color: whitesmoke;
     height: 100px;
     vertical-align: top;
-    font-size: 16px;
+    font-size: 18px;
   }
 
   .notmonth, .notmonth a { color: #CCC; }
-  .today { background-color: #D7F2FF; }
+  .today { background-color: slategray; }
 }
 
 #workouts #month {
@@ -40,7 +40,7 @@
   a {
     text-decoration: none;
     padding: 0 10px;
-    color: #999;
+    color: black;
   }
 }
 
@@ -48,4 +48,14 @@
   font-size: 14px;
   padding-left: 20px;
   color: white;
+}
+
+#workouts li {
+  font-size: 18px;
+  padding-left: 20px;
+  color: white;
+}
+
+.workout_form_date {
+  font-size: 18pt;
 }
