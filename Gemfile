@@ -7,6 +7,7 @@ ruby '2.5.5'
 
 gem 'bcrypt', '~> 3.1', '>= 3.1.13'
 gem 'bootsnap', '>= 1.4.2', require: false
+gem 'foreman', '~> 0.86.0'
 gem 'hirb', '~> 0.7.3'
 gem 'jbuilder', '~> 2.7'
 gem 'pg', '>= 0.18', '< 2.0'
