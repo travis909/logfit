@@ -2,9 +2,8 @@ default: &default
   adapter: postgresql
   encoding: unicode
   pool: <%= ENV.fetch("RAILS_MAX_THREADS") { 5 } %>
-  username: travis909
-  password: 'Daytona97!'
-
+  username: <%= ENV['POSTGRES_USERNAME'] %>
+  password: <%= ENV['POSTGRES_PASSWORD'] %>
 development:
   <<: *default
   database: logfit_development
@@ -26,5 +25,5 @@ test:
 production:
   <<: *default
   database: logfit_production
-  username: travis909
+  username: logfit
   password: <%= ENV['LOGFIT_DATABASE_PASSWORD'] %>
